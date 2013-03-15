@@ -1,0 +1,33 @@
+/* BlueCalc CSS Styles */
+
+body 		{ background: #90bccc; color: #404040; font-family: Helvetica, Arial, sans-serif; font-size: 15px; margin: 0; }
+a, a:visited { color: #0084B4; }
+a:hover		{ color: #ab5953; }
+form		{ margin: 0; padding: 0; }
+.calc		{ background: url('logo.png') no-repeat; color: #FFF; border-color: #434343; padding: 5px 80px 0 80px; font-weight: bold; }
+.beta		{ background: url('beta.png') no-repeat #0084B4; background-position: right top; }
+label 		{ margin-right: 13px; white-space: nowrap; }
+.preview	{ background: #FFF; padding-bottom: 20px; }
+.grid 		{ background-color: #F1F1F1; margin: 20px; }
+.head 		{ text-align: left; padding: 10px; border-bottom: 2px solid #F2EBDC; background-color: #F2EBDC; }
+.head input	{ float: right; }
+.grid div 	{ float: left; background-color: #BFD4D9; height: 100px; }
+.grid span 	{ display: block; clear: both; }
+.msg		{ width: 500px;  padding: 15px; font-size: 14px; font-weight: bold; border-width: 3px; border-top-width: 0; border-style: solid; }
+.success	{ background: #E6EFC2; color: #264409; border-color: #C6D880; }
+.error		{ background: #FBE3E4; color: #8a1f11; border-color: #FBC2C4; }
+.footer		{ line-height: 1.5em; font-size: 20px; }
+h1			{ font-size: 26px; }
+ul			{ list-style: decimal outside; margin: 0; padding-left: 20px; }
+.change		{ font-size: 10px; color: #DFF0F6; background-color: #404040; line-height: 1.2em; margin-top: 10px; }
+
+#modal 		{ position: absolute; left: 0; top: 0; bottom: 0; width: 100%; background: #000; z-index: 10; display: none; }
+#popup		{ position: absolute; background: #FFF; border: 5px #0084B4 solid; padding: 20px; z-index: 15; width: 500px; display: none; }
+#status		{ float: left; background-repeat: no-repeat; height: 20px; padding: 2px 0 0 25px; font-weight: bold; font-size: 11px; }
+#status.loader { background-image: url('loader.gif'); }
+#status.msg_ok { background-image: url('success.png'); }
+#status.msg_err { background-image: url('error.png'); }
+
+#popup label { display: block; font-weight: bold; }
+#txtEmail, #txtName, #txtMessage { width: 100%; margin-bottom: 10px;}
+#btnClose, #btnSend { float: right; margin-left: 10px; }
