@@ -79,26 +79,25 @@ if ($target > $max || $col_min_width > $max || $col_max_width > $max || $mar_min
 				 * NOTE: ... in with the new!
 				 */
 				$body .= "\t" . '<ul>' . "\n\t\t"
-						/* preview grid */
+						/* show grid source */
 				
-						.'<li><a href="blueprint.php?preview=1&width='.$target.'&columns='.$cols.'&span='.$width.'&margin='.$margin.'">Source code</a></li>' . "\n\t"
+							.'<li><a href="blueprint.php?preview=1&width='.$target.'&columns='.$cols.'&span='.$width.'&margin='.$margin.'">Source code</a></li>' . "\n\t"
+						
+						/* download grid.css */
+						
+							.'<li><a href="blueprint.php?width='.$target.'&columns='.$cols.'&span='.$width.'&margin='.$margin.'">Download grid.css</a></li>' . "\n\t\t"
 						
 						/* download grid image */
 						
-						.'<li><a href="gridimg.php?span='.$width.'&margin='.$margin.'">Download grid.png</a></li>' . "\n\t\t"
-						
-						/** download grid.css */
-						
-						.'<li><a href="blueprint.php?width='.$target.'&columns='.$cols.'&span='.$width.'&margin='.$margin.'">Download grid.css</a></li>' . "\n\t\t"
-						
+							.'<li><a href="gridimg.php?span='.$width.'&margin='.$margin.'">Download grid.png</a></li>' . "\n\t\t"
+
 						."</ul>\n\t";
-				
 				
 				$body .= 'Columns: <strong>'.$cols.'</strong>; Column Width: <strong>'.$width.'</strong>; Margin Width: <strong>'.$margin.'</strong>'
 						.'</span>'."\n\t";
 						
-				for ($c = 1 ; $c < $cols ; $c++) {
-					$body .= '<div style="width: '.$width.'px; margin-right: '.$margin.'px;"></div>';
+				for ($c = 1; $c < $cols; $c++) {
+					$body .= '<div class="'.($c % 2 ? 'odd' : 'even').'" style="width: '.$width.'px; margin-right: '.$margin.'px;"></div>';
 				}
 				
 				$body .= '<div style="width: '.$width.'px;"></div>'."\n".'<span></span>'."\n".'</div>'."\n";
@@ -124,22 +123,29 @@ require_once('includes/templates/header.php');
 				<div class="beta">
 					<div class="calc">
 						<table border="0" cellpadding="3" cellspacing="5">
+							
 							<tr>
 								<td><label for="">Total grid width:</label></td><td><input type="text" value="<?php echo $target; ?>" size="6" name="width" id="width" /></td>
 								<td colspan="2"><button type="submit" style="width: 100%;" id="btnSubmit">Calculate grids</button></td>
-							</tr>
+							</tr><!-- /grid width + submit button -->
 							
+							<!-- column width -->
 							<tr>
 								<td><label for="">Minimum column width:</label></td><td><input type="text" value="<?php echo $col_min_width; ?>" size="6" name="col_min_width" id="col_min_width" /></td>
+								
+								<td><label for="">Maximum column width:</label></td><td><input type="text" value="<?php echo $col_max_width; ?>" size="6" name="col_max_width" id="col_max_width" /></td>
+							</tr><!-- /column width -->
+							
+							<!-- margin width -->
+							<tr>
+								
+								
 								<td><label for="">Minimum margin width:</label></td><td><input type="text" value="<?php echo $mar_min_width; ?>" size="6" name="mar_min_width" id="mar_min_width" /></td>
 								
-							</tr>
-							
-							<tr>
-								<td><label for="">Maximum column width:</label></td><td><input type="text" value="<?php echo $col_max_width; ?>" size="6" name="col_max_width" id="col_max_width" /></td>
 								<td><label for="">Maximum margin width:</label></td><td><input type="text" value="<?php echo $mar_max_width; ?>" size="6" name="mar_max_width" id="mar_max_width" /></td>
 								
-							</tr>
+							</tr><!-- /margin width -->
+							
 						</table>
 					</div>
 				</div>
@@ -166,25 +172,25 @@ if (getParam('width', false) || getParam('col_min_width', false) || getParam('co
 		</div>
 	<?php
 }
+
+
+
+/**
+ * load only on front page
+ * NOTE: QUERY_STRING usually is ALWAYS set, so checking with !isset will NEVER be false! .. and thus the entirely wrong choice
+ */
+if( empty($_SERVER['QUERY_STRING']) != false ) {
+	
+	if( file_exists('news.inc.php') && filesize('news.inc.php') > 0) {
 ?>
 		<div class="box news">
-		
-			<h2>Recent update: <?php echo date('Y-m-d H:i', getlastmod() ); ?></h2>
+			<?php include('news.inc.php'); ?>
 			
-			
-			<p>Welcome to BlueCalc2 - <a href="https://github.com/ginsterbusch/bluecalc">fork</a> and continued development of the <a href="http://bluecalc.xily.info/">original bluecalc</a> by Peter-Christoph Haider.</p>
-			
-			<p>Planned / work-in-progress features:</p>
-			
-			<ul>
-				<li>Major cleanup and modernization of the project</li>
-				<li>Adding nice sliding switches, similar to <a href="http://www.problem.se/labs/gridcalc/">GridCalc</a></li>
-				<li>Caching; and thus unique URLs for the calculated grids</li>
-				<li>Support for Blueprinter CSS framework (and maybe a few others)</li>
-				<li>Grid-calculation templates</li>
-			</ul>
 		</div>
-
+<?php 
+	}
+	
+} ?>
 
 		<div class="row info" id="info">
 			<h2>What's this?</h2>
