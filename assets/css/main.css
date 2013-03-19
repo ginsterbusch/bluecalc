@@ -35,35 +35,133 @@ table {
  * ---------------------------------------------------------------*/
 
 body { 
-	background: #90bccc; 
+	background: #ECE0EB; 
 	color: #404040; 
-	font: 12px/21px Frutiger, "Frutiger Linotype", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Arial, sans-serif;
+	font: 16px/21px Frutiger, "Frutiger Linotype", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Arial, sans-serif;
 	
-	font-size: 15px; margin: 0; 
-		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+	-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
 	-webkit-text-size-adjust: 100%;
+	
 }
 
-a, a:visited { color: #0084B4; }
-a:hover		{ color: #ab5953; }
-form		{ margin: 0; padding: 0; }
-label 		{ margin-right: 13px; white-space: nowrap; }
-h1			{ font-size: 26px; }
+a,a:link, a:visited { 
+	color: #0084B4;
+	font-weight: bold;
+	text-decoration: underline;
+}
+a:hover { 	
+	color: #ab5953; 
+	text-decoration: none;
+	
+}
 
-ul			{ list-style: decimal outside; margin: 0; padding-left: 20px; }
 
-	.calc		{ background: url('logo.png') no-repeat; color: #FFF; border-color: #434343; padding: 5px 80px 0 80px; font-weight: bold; }
-	.beta		{ background: url('beta.png') no-repeat #0084B4; background-position: right top; }
+h1,h2,h3,h4,h5,h6 {
+	padding: 5px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
 
-	.preview	{ background: #FFF; padding-bottom: 20px; }
+h1 { 
+	font-size: 26px;
+	line-height: 30px;
+}
+
+h2 {
+	font-size: 22px;
+	line-height: 26px;
+}
+
+h3 {
+	font-size: 18px;
+	line-height: 22px;
+}
+
+h4,h5,h6 {
+	font-weight: bold;
+}
+
+ol, ul { 
+	margin: 0; 
+	padding-left: 20px; 
+	margin-left: 10px;
+}
+
+ol {
+	list-style: decimal outside;
+}
+
+ul {
+	list-style: disc;
+}
+
+p {
+	padding: 5px;
+}
+
+
+label { 
+/*
+	margin-right: 10px; 
+*/
+	white-space: nowrap; 
+}
+
+
+button {
+	background-color: #eee;
+	color: #000;
+	border: 2px solid #333;
+	border-radius: 2px;
+	padding: 5px;	
+}
+
+input, textarea {
+	border: 1px solid #666;
+	border-radius: 2px;
+	padding: 5px;
+	text-align: right;	
+}
+
+
+	.calc		{ background: url('../images/logo.png') no-repeat; color: #FFF; border-color: #434343; padding: 5px 80px 0 80px; font-weight: bold; }
+	.beta		{ background: url('../images/beta.png') no-repeat #0084B4; background-position: right top; }
+
+	.preview { 
+		background: #FFF; 
+		padding: 20px 0;
+	}
 	.grid 		{ background-color: #F1F1F1; margin: 20px; }
 	.head 		{ text-align: left; padding: 10px; border-bottom: 2px solid #F2EBDC; background-color: #F2EBDC; }
-	.head input	{ float: right; }
+	.head ul	{ 
+		float: right; 
+	}
 	
+	.head ul li {
+		list-style: none;
+		display: inline-block;
+		margin-left: 5px;
+	}
+	
+	.head ul li a {
+		font-weight: normal;
+	}
+	
+	.grid, .msg {
+		margin: 0 auto 20px;
+	}
 	.grid div 	{ float: left; background-color: #BFD4D9; height: 100px; }
 	.grid span 	{ display: block; clear: both; }
 	
-	.msg		{ width: 500px;  padding: 15px; font-size: 14px; font-weight: bold; border-width: 3px; border-top-width: 0; border-style: solid; }
+	.msg		{ 
+		width: 500px;  
+		padding: 15px; 
+		font-size: 14px; 
+		font-weight: bold; 
+		
+		border: 3px solid #ccc;
+}
 	.success	{ background: #E6EFC2; color: #264409; border-color: #C6D880; }
 	.error		{ background: #FBE3E4; color: #8a1f11; border-color: #FBC2C4; }
 	.footer		{ line-height: 1.5em; font-size: 20px; }
@@ -74,34 +172,51 @@ ul			{ list-style: decimal outside; margin: 0; padding-left: 20px; }
 	#modal 		{ position: absolute; left: 0; top: 0; bottom: 0; width: 100%; background: #000; z-index: 10; display: none; }
 	#popup		{ position: absolute; background: #FFF; border: 5px #0084B4 solid; padding: 20px; z-index: 15; width: 500px; display: none; }
 	#status		{ float: left; background-repeat: no-repeat; height: 20px; padding: 2px 0 0 25px; font-weight: bold; font-size: 11px; }
-	#status.loader { background-image: url('loader.gif'); }
-	#status.msg_ok { background-image: url('success.png'); }
-	#status.msg_err { background-image: url('error.png'); }
+	#status.loader { background-image: url('../images/loader.gif'); }
+	#status.msg_ok { background-image: url('../images/success.png'); }
+	#status.msg_err { background-image: url('../images/error.png'); }
 
 	#popup label { display: block; font-weight: bold; }
 	#txtEmail, #txtName, #txtMessage { width: 100%; margin-bottom: 10px;}
 	#btnClose, #btnSend { float: right; margin-left: 10px; }
 
+	#top td {
+		padding: 5px 10px;
+	}
+	
+	#top table {
+		margin: auto;
+	}
 
+	
 /* ----------------------------------------------------------------- 
  * BOXES
  * ---------------------------------------------------------------*/
 
 .box {
-	width: 48%;
-	padding: 2%;
-	display: inline-block;
+	width: 45%;
+	padding: 1%;
+	margin-left: 1%;
+	display: block;
+	float: left;
+	min-height: 250px;
+	
+	overflow: hidden; /** clearfix */
 }
+
 	
 .row {
 	width: 96%;
-	padding: 2%;
+	padding: 1%;
+	margin: 10px auto;
 	display: block;
+	clear: both;
+	
 }
 
 	.box h2, .row h2 {
 		background: #0F010E; 
-		color: #ECE0EB;
+		color: #fcfcfc;
 	}
 	
 	
@@ -109,10 +224,127 @@ ul			{ list-style: decimal outside; margin: 0; padding-left: 20px; }
  * Singular boxes
  */
  
+	.box.news {
+		width: 80%;
+		display: block;
+		margin: 20px auto;
+		float: none;
+		background-color: #efefef;
+	
+		height: auto;
+		min-height: inherit;
+		
+		border: 3px dashed #f22;
+	}
+	
+	.box.news h2 {
+		font-size: 1.1em;
+		padding: 3px 5px;
+		margin-top: 0;
+	}
+	
+	.box.about {
+		background-color: #E2E2D7;
+	}
+	
+		.box.about em {
+			font-size: 14px;
+			font-style: italic;
+		}
+	
+	.box.how {
+		background-color: #F3E2D8;
+	}
+ 
 /**
  * Singular rows
  */
-	.row.powered-by {
-		background-color: #222;
-		color: #eee;
+	.row.feedback {
+		background-color: #efefef;
 	}
+ 
+ 
+ 	.row.powered-by {
+		background-color: #dfa;
+		color: #000;
+		width: 100%;
+		padding: 0;
+		margin-bottom: 0;
+		min-height: 120px;
+	}
+	
+	.powered-by-logo, .powered-by-text {
+		display: inline-block;
+		padding: 5px;
+	}
+	
+	.powered-by-logo {
+		width: 16%;
+		padding-left: 2%;
+		margin-top: 20px;
+	}
+	
+		
+	
+		.powered-by-logo a, .powered-by-logo a img {
+			display: block;
+			
+		}
+	
+	.powered-by-text {
+		width: 80%;
+		vertical-align: 100%;
+	}
+	
+
+/* ----------------------------------------------------------------- 
+ * FOOTER
+ * ---------------------------------------------------------------*/
+
+#footer {
+
+	background-color: #000;
+	color: #ddd;
+	font-size: 0.7em;
+	line-height: 1.2em;
+	padding: 20px 0;
+}
+
+
+	
+/* #Clearing / from Skeleton, mixed w/ others
+================================================== */
+
+
+/* Use clearfix class on PARENT to clear nested columns,
+or wrap each row of columns in a <div class="row"> */
+.clearfix:before,
+.clearfix:after,
+.row:before,
+.row:after,
+.box:before,
+.box:after,
+.container:after {
+	content: '\0020';
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0; }
+	
+	.row:after,
+	.clearfix:after {
+	clear: both; }
+	.row,
+	.clearfix {
+	zoom: 1; }
+
+/* You can also use a <br class="clear" /> to clear columns */
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
