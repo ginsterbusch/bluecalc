@@ -100,7 +100,7 @@ if ($target > $max || $col_min_width > $max || $col_max_width > $max || $mar_min
 					$body .= '<div class="'.($c % 2 ? 'odd' : 'even').'" style="width: '.$width.'px; margin-right: '.$margin.'px;"></div>';
 				}
 				
-				$body .= '<div style="width: '.$width.'px;"></div>'."\n".'<span></span>'."\n".'</div>'."\n";
+				$body .= '<div class="'.($c % 2 ? 'odd' : 'even').'" style="width: '.$width.'px;"></div>'."\n".'<span></span>'."\n".'</div>'."\n";
 			}
 		}
 	}
